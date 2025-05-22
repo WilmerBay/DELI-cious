@@ -1,11 +1,33 @@
-public class Sandwich { // shout out to nate the guy
-    String bread;
-    String size;
-    String toppings;
-    int price;
+import java.util.ArrayList;
+import java.util.List;
 
-    void printSandwichAttributes() {
-        System.out.println(bread);
-        System.out.println(size);
+public class Sandwich {
+
+    private String bread;
+    private String size;
+    private int price;
+    private boolean isToasted;
+    private List<Topping> toppings;
+
+    public Sandwich (String size, String bread, boolean isToasted) {
+
+        this.size = size;
+        this.bread = bread;
+        this.isToasted = isToasted;
+        this.toppings = new ArrayList<>();
+    }
+    public void addTopping (Topping topping) {
+        toppings.add(topping);
+    }
+    public double calculatePrice() {
+
+        double basePrice = switch (size) {
+            case "4" -> 5.50;
+            case "8" -> 7.00;
+            case "12" -> 8.50;
+            default -> 0.00;
+        };
+
+        //for
     }
 }
