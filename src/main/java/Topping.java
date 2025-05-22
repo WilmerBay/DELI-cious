@@ -4,11 +4,6 @@ public class Topping {
     private ToppingType type;
     private boolean isExtra;
 
-    public enum ToppingType {
-
-        MEAT, CHEESE, REGULAR, SAUCE // enums to use for case switch for the get price method
-    }
-
     public Topping(String name, ToppingType type, boolean isExtra) {
 
         this.name = name;
