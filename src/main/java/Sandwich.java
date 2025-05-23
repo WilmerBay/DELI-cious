@@ -66,5 +66,25 @@ public class Sandwich {
         this.toppings = toppings;
     }
 
+    @Override
+    public String toString() { // overide for receipt printout
 
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(size).append("\" ").append(bread).append(" sandwich\n"); //adds size and bread to string builder
+
+        if (isToasted) sb.append("Toasted\n"); // adds boolean to true for toasted and prints it
+        sb.append("Toppings:\n");
+
+        if (toppings.isEmpty()) { //prints no toppings
+            sb.append(" - None\n");
+        } else {
+            for (Topping topping : toppings) { // loop to read toppings and adds to sb
+                sb.append(" - ").append(topping.toString()).append("\n");
+            }
+        }
+
+        sb.append("Total: $").append(String.format("%.2f", calculatePrice()));
+        return sb.toString(); // calculates price to have final info to send to receiptGen
+    }
 }
