@@ -104,17 +104,16 @@ public class MenuScreen {
         // Makes Sandwich obj based on customers choice
         Sandwich sandwich = new Sandwich(size, bread, toasted);
 
-        // Loop for adding toppings until user is happy
+        // Loop for adding toppings
         while (true) {
-            System.out.println("\nAdd a topping by entering the number or type 'done':");
+            System.out.println("\nAdd a topping or type 'done' to finish:");
             System.out.print("Topping name: ");
             String toppingName = scanner.nextLine().trim();
 
-            if (toppingName.equalsIgnoreCase("done")) break; // allows user to finish toppings
+            if (toppingName.equalsIgnoreCase("done")) break;
 
             String toppingType = "";
 
-            // Number options for topping type
             while (true) {
                 System.out.println("""
                         Topping type:
@@ -137,7 +136,6 @@ public class MenuScreen {
                 if (!toppingType.isEmpty()) break;
             }
 
-            // Boolean prompt for marking topping as "extra"
             boolean extrCharge = false;
 
             while (true) {
@@ -154,13 +152,13 @@ public class MenuScreen {
                 System.out.println("Please type 'y' or 'n'.");
             }
 
-            // Adds the topping to the sandwich
             Topping topping = new Topping(toppingName, toppingType, extrCharge);
             sandwich.addTopping(topping);
-
-            System.out.println("Added: " + topping.toString());
+            System.out.println("Added: " + topping);
         }
-        String chipChoice = "";
+
+        // ✅ Select chips
+        Chip chip = null;
 
         while (true) {
             System.out.println("""
@@ -169,28 +167,31 @@ public class MenuScreen {
                     2) BBQ
                     3) Sour Cream
                     4) Jalapeno
-                    5) No Chips
+                    5) None
                     """);
 
             System.out.print("> ");
             String input = scanner.nextLine().trim();
 
             switch (input) {
-                case "1" -> chipChoice = "Classic";
-                case "2" -> chipChoice = "BBQ";
-                case "3" -> chipChoice = "Sour Cream";
-                case "4" -> chipChoice = "Jalapeno";
-                case "5" -> chipChoice = "None";
+                case "1" -> chip = new Chip("Classic");
+                case "2" -> chip = new Chip("BBQ");
+                case "3" -> chip = new Chip("Sour Cream");
+                case "4" -> chip = new Chip("Jalapeno");
+                case "5" -> chip = new Chip("None");
                 default -> System.out.println("Invalid choice. Please choose 1–5.");
             }
-            if (!chipChoice.isEmpty()) break;
+
+            if (chip != null) break;
         }
 
-        // Summary printout using Sandwich.toString()
-        System.out.println("""
-                --- Sandwich Order ---
-                """);
+        // ✅ Order class introduced
+        Order order = new Order(sandwich, chip, null);
 
-        System.out.println(sandwich);
+        // ✅ Print out order summary
+        System.out.println("""
+                --- Final Order ---
+                """);
+        System.out.println(order);
     }
 }

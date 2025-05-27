@@ -8,6 +8,7 @@ public class Sandwich {
     private int price;
     private boolean isToasted;
     private List<Topping> toppings;
+    private Chip chip;
 
     public Sandwich (String size, String bread, boolean isToasted) {
 
@@ -65,6 +66,13 @@ public class Sandwich {
     public void setToppings(List<Topping> toppings) {
         this.toppings = toppings;
     }
+    public void setChip(Chip chip) {
+        this.chip = chip;
+    }
+
+    public Chip getChip() {
+        return chip;
+    }
 
     @Override
     public String toString() { // overide for receipt printout
@@ -73,7 +81,7 @@ public class Sandwich {
 
         sb.append(size).append("\" ").append(bread).append(" sandwich\n"); //adds size and bread to string builder
 
-        if (isToasted) sb.append("Toasted\n"); // adds boolean to true for toasted and prints it
+        if (isToasted) sb.append("Toasted\n"); // adds boolean to true for toasted for printing
         sb.append("Toppings:\n");
 
         if (toppings.isEmpty()) { //prints no toppings
@@ -81,6 +89,9 @@ public class Sandwich {
         } else {
             for (Topping topping : toppings) { // loop to read toppings and adds to sb
                 sb.append(" - ").append(topping.toString()).append("\n");
+            }
+            if (chip != null && !chip.getName().equalsIgnoreCase("None")) {
+                sb.append("Chips: ").append(chip).append("\n"); // Chip's toString() is used
             }
         }
 
