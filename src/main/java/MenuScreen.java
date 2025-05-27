@@ -110,7 +110,7 @@ public class MenuScreen {
             System.out.print("Topping name: ");
             String toppingName = scanner.nextLine().trim();
 
-            if (toppingName.equalsIgnoreCase("done")) break; // ✅ allows user to finish toppings
+            if (toppingName.equalsIgnoreCase("done")) break; // allows user to finish toppings
 
             String toppingType = "";
 
@@ -159,6 +159,31 @@ public class MenuScreen {
             sandwich.addTopping(topping);
 
             System.out.println("Added: " + topping.toString());
+        }
+        String chipChoice = "";
+
+        while (true) {
+            System.out.println("""
+                    Choose a chip:
+                    1) Classic
+                    2) BBQ
+                    3) Sour Cream
+                    4) Jalapeno
+                    5) No Chips
+                    """);
+
+            System.out.print("> ");
+            String input = scanner.nextLine().trim();
+
+            switch (input) {
+                case "1" -> chipChoice = "Classic";
+                case "2" -> chipChoice = "BBQ";
+                case "3" -> chipChoice = "Sour Cream";
+                case "4" -> chipChoice = "Jalapeno";
+                case "5" -> chipChoice = "None";
+                default -> System.out.println("Invalid choice. Please choose 1–5.");
+            }
+            if (!chipChoice.isEmpty()) break;
         }
 
         // Summary printout using Sandwich.toString()
