@@ -1,17 +1,16 @@
 import java.util.Scanner;
 
-public class MenuHandler { // UI for user's to input
+public class MenuScreen {
 
     private final Scanner scanner;
 
-    public MenuHandler() {
+    public MenuScreen() {
         scanner = new Scanner(System.in);
     }
 
-    public void displayHomeScreen() { // called to Main
+    public void displayHomeScreen() { // called from Main.java
 
         while (true) {
-
             System.out.println("""
                     =========================
                     Welcome to DELI-cious!
@@ -24,10 +23,10 @@ public class MenuHandler { // UI for user's to input
             String choice = scanner.nextLine().trim();
 
             switch (choice) {
-                case "1" -> startSandwichBuilder();
+                case "1" -> startSandwichBuilder(); // starts sandwich builder
                 case "0" -> {
                     System.out.println("Goodbye!");
-                    return;
+                    return; // exits app
                 }
                 default -> System.out.println("Invalid option. Try again.");
             }
@@ -85,10 +84,10 @@ public class MenuHandler { // UI for user's to input
             }
             if (!bread.isEmpty()) break;
         }
+
         boolean toasted = false;
 
         while (true) {
-
             System.out.print("Would you like it toasted? (y/n): ");
             String input = scanner.nextLine().trim().toLowerCase();
 
@@ -102,20 +101,21 @@ public class MenuHandler { // UI for user's to input
             System.out.println("Please type 'y' or 'n'.");
         }
 
+        // Makes Sandwich obj based on customers choice
         Sandwich sandwich = new Sandwich(size, bread, toasted);
 
+        // Loop for adding toppings until user is happy
         while (true) {
-
             System.out.println("\nAdd a topping by entering the number or type 'done':");
             System.out.print("Topping name: ");
             String toppingName = scanner.nextLine().trim();
 
-            if (toppingName.equalsIgnoreCase("done")) break;
+            if (toppingName.equalsIgnoreCase("done")) break; // ✅ allows user to finish toppings
 
             String toppingType = "";
 
+            // Number options for topping type
             while (true) {
-
                 System.out.println("""
                         Topping type:
                         1) Meat
@@ -137,36 +137,35 @@ public class MenuHandler { // UI for user's to input
                 if (!toppingType.isEmpty()) break;
             }
 
-            boolean isExtra = false;
+            // Boolean prompt for marking topping as "extra"
+            boolean extrCharge = false;
 
             while (true) {
-
                 System.out.print("Add extra of this topping? (y/n): ");
                 String input = scanner.nextLine().trim().toLowerCase();
 
                 if (input.equals("y")) {
-                    isExtra = true;
+                    extrCharge = true;
                     break;
                 } else if (input.equals("n")) {
-                    isExtra = false;
+                    extrCharge = false;
                     break;
                 }
                 System.out.println("Please type 'y' or 'n'.");
             }
 
-            Topping topping = new Topping(toppingName, toppingType, isExtra);
-
+            // Adds the topping to the sandwich
+            Topping topping = new Topping(toppingName, toppingType, extrCharge);
             sandwich.addTopping(topping);
 
             System.out.println("Added: " + topping.toString());
         }
 
+        // Summary printout using Sandwich.toString()
         System.out.println("""
-                --- Sandwich Summary ---
+                --- Sandwich Order ---
                 """);
 
         System.out.println(sandwich);
     }
 }
-
-
