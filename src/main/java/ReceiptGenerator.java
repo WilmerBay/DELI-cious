@@ -34,5 +34,14 @@ public class ReceiptGenerator {
         if (drink != null && !drink.getName().equalsIgnoreCase("None")) {
             System.out.println("Drink: " + drink);
         }
+        // logic to run calculations, creating variables here calling to the sandwich class to get the price of sandwich, set that price to get the tax, and then finally getting the total by addint the two
+        double subtotal = sandwich.calculatePrice();
+        double tax = subtotal * TAX_RATE;
+        double total = subtotal + tax;
+
+        System.out.printf("%nSubtotal: $%.2f%n", subtotal); // showing subtotal formatted
+        System.out.printf("Tax (%.1f%%): $%.2f%n", TAX_RATE * 100, tax); // showing tax
+        System.out.printf("Total: $%.2f%n", total); // final total
+        System.out.println("==================================");
     }
 }
