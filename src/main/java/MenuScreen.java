@@ -106,38 +106,64 @@ public class MenuScreen {
 
         // Loop for adding toppings
         while (true) {
-            System.out.println("\nAdd a topping or type 'done' to finish:");
-            System.out.print("Topping name: ");
-            String toppingName = scanner.nextLine().trim();
+            System.out.println("""
+            Choose a topping type (or type 'done' to finish):
+            1) Meat
+            2) Cheese
+            3) Regular
+            4) Sauce
+            """);
 
-            if (toppingName.equalsIgnoreCase("done")) break;
+            System.out.print("> ");
+            String typeChoice = scanner.nextLine().trim();
 
-            String toppingType = "";
+            if (typeChoice.equalsIgnoreCase("done")) break;
 
-            while (true) {
-                System.out.println("""
-                        Topping type:
-                        1) Meat
-                        2) Cheese
-                        3) Regular
-                        4) Sauce
-                        """);
-
-                System.out.print("> ");
-                String input = scanner.nextLine().trim();
-
-                switch (input) {
-                    case "1" -> toppingType = "meat";
-                    case "2" -> toppingType = "cheese";
-                    case "3" -> toppingType = "regular";
-                    case "4" -> toppingType = "sauce";
-                    default -> System.out.println("Invalid choice. Please select 1–4.");
-                }
-                if (!toppingType.isEmpty()) break;
+            if (!typeChoice.matches("[1-4]")) {
+                System.out.println("Invalid choice. Please select 1–4 or type 'done'.");
+                continue;
             }
 
-            boolean extrCharge = false;
+            String toppingType = switch (typeChoice) {
+                case "1" -> "meat";
+                case "2" -> "cheese";
+                case "3" -> "regular";
+                case "4" -> "sauce";
+                default -> ""; // This will never happen due to prior validation
+            };
 
+            String[] options = switch (toppingType) {
+                case "meat" -> new String[]{"Turkey", "Ham", "Roast Beef", "Salami"};
+                case "cheese" -> new String[]{"Cheddar", "Swiss", "Provolone", "American"};
+                case "regular" -> new String[]{"Lettuce", "Tomato", "Onion", "Pickles"};
+                case "sauce" -> new String[]{"Mayo", "Mustard", "Chipotle", "Ranch"};
+                default -> new String[0];
+            };
+
+            // Display numbered options
+            System.out.println("Available " + toppingType + "s:");
+            for (int i = 0; i < options.length; i++) {
+                System.out.println((i + 1) + ") " + options[i]);
+            }
+
+            System.out.print("Select a topping by number: ");
+            String indexInput = scanner.nextLine().trim();
+
+            int index;
+            try {
+                index = Integer.parseInt(indexInput) - 1;
+                if (index < 0 || index >= options.length) {
+                    System.out.println("Invalid number. Try again.");
+                    continue;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number.");
+                continue;
+            }
+
+            String toppingName = options[index];
+
+            boolean extrCharge = false;
             while (true) {
                 System.out.print("Add extra of this topping? (y/n): ");
                 String input = scanner.nextLine().trim().toLowerCase();
@@ -156,7 +182,6 @@ public class MenuScreen {
             sandwich.addTopping(topping);
             System.out.println("Added: " + topping);
         }
-
         // making chip variable
         Chip chip = null;
 
