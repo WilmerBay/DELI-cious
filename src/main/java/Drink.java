@@ -10,7 +10,7 @@ public class Drink {
         return name;
     }
 
-    // optional: override toString for clean printouts
+    // override toString for clean printouts
     @Override
     public String toString() {
         return name;
