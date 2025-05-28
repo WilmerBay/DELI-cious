@@ -244,6 +244,6 @@ public class MenuScreen {
         System.out.println("""
                 --- Final Order ---
                 """);
-        System.out.println(order);
+        ReceiptGenerator.printReceipt(order);
     }
 }
