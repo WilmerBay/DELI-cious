@@ -157,7 +157,7 @@ public class MenuScreen {
             System.out.println("Added: " + topping);
         }
 
-        // ✅ Select chips
+        // making chip variable
         Chip chip = null;
 
         while (true) {
@@ -185,10 +185,37 @@ public class MenuScreen {
             if (chip != null) break;
         }
 
-        // ✅ Order class introduced
-        Order order = new Order(sandwich, chip, null);
+        // Order class introduced for all the info - sandwich drink, chip
+        Drink drink = null;
 
-        // ✅ Print out order summary
+        while (true) {
+            System.out.println("""
+                    Choose a drink:
+                    1) Water
+                    2) Soda
+                    3) Iced Tea
+                    4) Lemonade
+                    5) None
+                    """);
+
+            System.out.print("> ");
+            String input = scanner.nextLine().trim();
+
+            switch (input) {
+                case "1" -> drink = new Drink("Water");
+                case "2" -> drink = new Drink("Soda");
+                case "3" -> drink = new Drink("Iced Tea");
+                case "4" -> drink = new Drink("Lemonade");
+                case "5" -> drink = new Drink("None");
+                default -> System.out.println("Invalid choice. Please choose 1–5.");
+            }
+
+            if (drink != null) break;
+        }
+        // creates order with all items the customer has chosen.
+        Order order = new Order(sandwich, chip, drink);
+
+        // order print out
         System.out.println("""
                 --- Final Order ---
                 """);
