@@ -132,7 +132,7 @@ public class MenuScreen {
                     System.out.println((i + 1) + ") " + sandwich.getToppings().get(i));
                 }
 
-                System.out.print("Enter number to remove: ");
+                System.out.print("Enter number to remove, or press enter to cancel removal: ");
                 String removeInput = scanner.nextLine().trim();
 
                 try {
