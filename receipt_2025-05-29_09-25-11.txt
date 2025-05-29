@@ -1,0 +1,18 @@
+======= DELI-cious Receipt =======
+12" rye sandwich: $8.50
+Toasted
+Toppings:
+ - Turkey (extra)       $4.50
+ - American             $2.25
+ - Lettuce              $0.00
+ - Tomato               $0.00
+ - Onion                $0.00
+ - Pickles              $0.00
+ - Mayo                 $0.00
+Chips: Sour Cream        $1.50
+Drink: Water             $1.50
+
+Subtotal: $18.25
+Tax (9.5%): $1.73
+Total: $19.98
+==================================

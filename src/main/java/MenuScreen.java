@@ -200,10 +200,10 @@ public class MenuScreen {
             };
 
             String[] options = switch (toppingType) {
-                case "meat" -> new String[]{"Turkey", "Ham", "Roast Beef", "Salami"};
-                case "cheese" -> new String[]{"Cheddar", "Swiss", "Provolone", "American"};
-                case "regular" -> new String[]{"Lettuce", "Tomato", "Onion", "Pickles",    };
-                case "sauce" -> new String[]{"Mayo", "Mustard", "Chipotle", "Ranch"};
+                case "meat" -> new String[]{"Turkey", "Ham", "Roast Beef", "Salami", "Chicken Breast", "Meat Ball"};
+                case "cheese" -> new String[]{"Cheddar", "Swiss", "Provolone", "American", "Pepper Jack"};
+                case "regular" -> new String[]{"Lettuce", "Tomato", "Onion", "Pickles", "Peppers", "Jalapeños", "Cucumbers", "Mushrooms", "Guacamole"};
+                case "sauce" -> new String[]{"Mayo", "Mustard", "Chipotle", "Ranch", "Honey Mustard", "Aus jus"};
                 default -> new String[0];
             };
 
