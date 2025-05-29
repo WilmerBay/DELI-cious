@@ -3,7 +3,6 @@ package ui;
 import data.SignatureMenu;
 import models.*;
 import persistence.ReceiptGenerator;
-
 import java.util.List;
 import java.util.Scanner;
 
@@ -218,9 +217,11 @@ public class MenuScreen {
             for (int i = 0; i < options.length; i++) {
                 System.out.println((i + 1) + ") " + options[i]);
             }
+            System.out.println("Press enter to leave");
 
             System.out.print("Select a topping by number: ");
             String indexInput = scanner.nextLine().trim();
+            // loop
 
             int index;
             try {
@@ -230,7 +231,6 @@ public class MenuScreen {
                     continue;
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input.");
                 continue;
             }
 
