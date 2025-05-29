@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class MenuScreen {
@@ -8,14 +9,14 @@ public class MenuScreen {
         scanner = new Scanner(System.in);
     }
 
-    public void displayHomeScreen() { // called from Main.java
-
+    public void displayHomeScreen() {
         while (true) {
             System.out.println("""
                     =========================
                     Welcome to DELI-cious!
                     =========================
                     1) New Sandwich
+                    2) Signature Sandwich
                     0) Exit
                     """);
 
@@ -23,13 +24,46 @@ public class MenuScreen {
             String choice = scanner.nextLine().trim();
 
             switch (choice) {
-                case "1" -> startSandwichBuilder(); // starts sandwich builder
+                case "1" -> startSandwichBuilder();
+                case "2" -> displaySignatureMenu();
                 case "0" -> {
                     System.out.println("Goodbye!");
-                    return; // exits app
+                    return;
                 }
                 default -> System.out.println("Invalid option. Try again.");
             }
+        }
+    }
+
+    private void displaySignatureMenu() {
+        System.out.println("--- Signature Sandwiches ---");
+        List<SignatureSandwich> list = SignatureMenu.getSandwiches();
+
+        for (int i = 0; i < list.size(); i++) {
+            System.out.printf("%d) %s - %s%n", i + 1, list.get(i).getName(), list.get(i).getDescription());
+        }
+        System.out.println("0) Back to Main Menu");
+
+        System.out.print("> ");
+        String input = scanner.nextLine().trim();
+
+        if (input.equals("0")) return;
+
+        try {
+            int choice = Integer.parseInt(input) - 1;
+            SignatureSandwich selected = SignatureMenu.getByIndex(choice);
+            if (selected != null) {
+
+                Order order = new Order(selected, new Chip("Classic"), new Drink("Soda"));
+                ReceiptGenerator.printReceipt(order);
+                ReceiptGenerator.writeReceiptToFile(order);
+                System.out.println("Thank you for ordering a signature sandwich!");
+                System.exit(0);
+            } else {
+                System.out.println("Invalid choice. Returning to menu.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Please enter a number.");
         }
     }
 
