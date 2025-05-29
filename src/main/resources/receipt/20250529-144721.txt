@@ -1,0 +1,15 @@
+======= DELI-cious Receipt =======
+8" rye sandwich
+Base Sandwich:            $7.00
+Toppings:
+ - Salami               $2.00
+ - Provolone            $1.50
+ - Tomato               $0.00
+ - Ranch                $0.00
+Chips: Classic           $1.50
+Drink: Medium Soda       $2.50
+
+Subtotal: $14.50
+Tax (9.5%): $1.38
+Total: $15.88
+==================================

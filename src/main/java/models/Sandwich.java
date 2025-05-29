@@ -33,11 +33,22 @@ public class Sandwich {
             default -> 0.00;
         };
 
+
         for (Topping topping : toppings) {
             basePrice += topping.getPrice(size);
         }
         return basePrice;
+
     }
+    public double calculateBasePrice() {// just to grab the base price of the sandwhich to print into receipt
+        return switch (size) {
+            case "4" -> 5.50;
+            case "8" -> 7.00;
+            case "12" -> 8.50;
+            default -> 0.00;
+        };
+    }
+
     public String getSize() {
         return size;
     }
