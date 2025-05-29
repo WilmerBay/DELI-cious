@@ -58,6 +58,8 @@ public class MenuScreen {
                 ReceiptGenerator.printReceipt(order);
                 ReceiptGenerator.writeReceiptToFile(order);
                 System.out.println("Thank you for ordering a signature sandwich!");
+                System.out.println("Press Enter to exit...");
+                scanner.nextLine();
                 System.exit(0);
             } else {
                 System.out.println("Invalid choice. Returning to menu.");
@@ -311,7 +313,9 @@ public class MenuScreen {
                 """);
         ReceiptGenerator.printReceipt(order);
         ReceiptGenerator.writeReceiptToFile(order);
-        System.out.println("Thank you for your order!");
+        System.out.println("Thank you for ordering a signature sandwich!");
+        System.out.println("Press Enter to exit...");
+        scanner.nextLine(); // wait for user input before closing
         System.exit(0);
     }
 }
