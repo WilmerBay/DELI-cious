@@ -1,0 +1,18 @@
+======= DELI-cious Receipt =======
+4" wheat sandwich
+Toasted
+Toppings:
+ - Turkey (extra)       $1.50
+ - Provolone            $0.75
+ - Lettuce (extra)      $0.00
+ - Onion                $0.00
+ - Pickles              $0.00
+ - Mayo                 $0.00
+ - Mustard              $0.00
+Chips: Sour Cream        $1.50
+Drink: Lemonade          $1.50
+
+Subtotal: $10.75
+Tax (9.5%): $1.02
+Total: $11.77
+==================================

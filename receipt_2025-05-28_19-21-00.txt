@@ -1,0 +1,14 @@
+======= DELI-cious Receipt =======
+12" white sandwich
+Toppings:
+ - Mustard              $0.00
+ - Mustard              $0.00
+ - Cheddar              $2.25
+ - Ham (extra)          $4.50
+Chips: BBQ               $1.50
+Drink: Iced Tea          $1.50
+
+Subtotal: $18.25
+Tax (9.5%): $1.73
+Total: $19.98
+==================================
