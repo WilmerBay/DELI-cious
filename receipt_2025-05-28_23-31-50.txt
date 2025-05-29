@@ -1,12 +1,13 @@
 ======= DELI-cious Receipt =======
-8" rye sandwich
+8" rye sandwich: $7.00
+Toasted
 Toppings:
- - Salami               $2.00
+ - Roast Beef           $2.00
  - Provolone            $1.50
  - Tomato               $0.00
- - Ranch                $0.00
+ - Chipotle             $0.00
 Chips: Classic           $1.50
-Drink: Soda              $1.50
+Drink: Lemonade          $1.50
 
 Subtotal: $13.50
 Tax (9.5%): $1.28

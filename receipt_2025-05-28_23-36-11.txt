@@ -1,0 +1,14 @@
+======= DELI-cious Receipt =======
+4" wrap sandwich: $5.50
+Toppings:
+ - Mayo                 $0.00
+ - Mustard              $0.00
+ - Chipotle             $0.00
+ - Ranch                $0.00
+Chips: Classic           $1.50
+Drink: Soda              $1.50
+
+Subtotal: $8.50
+Tax (9.5%): $0.81
+Total: $9.31
+==================================

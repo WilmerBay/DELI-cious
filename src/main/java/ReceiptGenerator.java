@@ -12,8 +12,15 @@ public class ReceiptGenerator {
         Chip chip = order.getChip();
         Drink drink = order.getDrink();
 
-        System.out.println("======= DELI-cious Receipt =======");
-        System.out.println(sandwich.getSize() + "\" " + sandwich.getBread() + " sandwich");
+        System.out.println("======= DELI-cious Receipt =======\n");
+        double basePrice = switch (sandwich.getSize()) {
+            case "4" -> 5.50;
+            case "8" -> 7.00;
+            case "12" -> 8.50;
+            default -> 0.00;
+        };
+        System.out.printf("%s\" %s sandwich: $%.2f%n", sandwich.getSize(), sandwich.getBread(), basePrice);
+
         if (sandwich.isToasted()) {
             System.out.println("Toasted");
         }
@@ -60,7 +67,14 @@ public class ReceiptGenerator {
             Drink drink = order.getDrink();
 
             writer.write("======= DELI-cious Receipt =======\n");
-            writer.write(sandwich.getSize() + "\" " + sandwich.getBread() + " sandwich\n");
+            double basePrice = switch (sandwich.getSize()) {
+                case "4" -> 5.50;
+                case "8" -> 7.00;
+                case "12" -> 8.50;
+                default -> 0.00;
+            };
+            writer.write(String.format("%s\" %s sandwich: $%.2f%n", sandwich.getSize(), sandwich.getBread(), basePrice));
+
             if (sandwich.isToasted()) {
                 writer.write("Toasted\n");
             }
