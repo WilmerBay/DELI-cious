@@ -3,14 +3,11 @@ public class ReceiptGenerator {
     private static final double TAX_RATE = 0.095; // 9.5% tax rate set to final calculating the price later one
 
     public static void printReceipt(Order order) {
-        //calling all classes getters
         Sandwich sandwich = order.getSandwich();
         Chip chip = order.getChip();
         Drink drink = order.getDrink();
 
         System.out.println("======= DELI-cious Receipt =======");
-
-        // grabs bread type, size and lists if it is toasted or not all in an if loop
         System.out.println(sandwich.getSize() + "\" " + sandwich.getBread() + " sandwich");
         if (sandwich.isToasted()) {
             System.out.println("Toasted");
@@ -21,27 +18,30 @@ public class ReceiptGenerator {
             System.out.println(" - None");
         } else {
             for (Topping topping : sandwich.getToppings()) {
-                System.out.println(" - " + topping);
+                double price = topping.getPrice(sandwich.getSize());
+                System.out.printf(" - %-20s $%.2f%n", topping, price);
             }
         }
 
-        // if loop for Chips, basically prints out "none because you dont have chips"
+        double chipPrice = 0.0;
         if (chip != null && !chip.getName().equalsIgnoreCase("None")) {
-            System.out.println("Chips: " + chip);
+            chipPrice = 1.50;
+            System.out.printf("Chips: %-17s $%.2f%n", chip, chipPrice);
         }
 
-        // if loop for Drink, same as chips
+        double drinkPrice = 0.0;
         if (drink != null && !drink.getName().equalsIgnoreCase("None")) {
-            System.out.println("Drink: " + drink);
+            drinkPrice = 1.50;
+            System.out.printf("Drink: %-17s $%.2f%n", drink, drinkPrice);
         }
-        // logic to run calculations, creating variables here calling to the sandwich class to get the price of sandwich, set that price to get the tax, and then finally getting the total by addint the two
-        double subtotal = sandwich.calculatePrice();
+
+        double subtotal = sandwich.calculatePrice() + chipPrice + drinkPrice;
         double tax = subtotal * TAX_RATE;
         double total = subtotal + tax;
 
-        System.out.printf("%nSubtotal: $%.2f%n", subtotal); // showing subtotal formatted
-        System.out.printf("Tax (%.1f%%): $%.2f%n", TAX_RATE * 100, tax); // showing tax
-        System.out.printf("Total: $%.2f%n", total); // final total
+        System.out.printf("%nSubtotal: $%.2f%n", subtotal);
+        System.out.printf("Tax (%.1f%%): $%.2f%n", TAX_RATE * 100, tax);
+        System.out.printf("Total: $%.2f%n", total);
         System.out.println("==================================");
     }
 }

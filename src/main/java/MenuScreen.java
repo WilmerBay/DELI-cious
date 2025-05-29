@@ -107,17 +107,48 @@ public class MenuScreen {
         // Loop for adding toppings
         while (true) {
             System.out.println("""
-            Choose a topping type (or type 'done' to finish):
+            Choose a topping type:
             1) Meat
             2) Cheese
             3) Regular
             4) Sauce
+            5) Done
+            6) Remove Topping
             """);
 
             System.out.print("> ");
             String typeChoice = scanner.nextLine().trim();
 
-            if (typeChoice.equalsIgnoreCase("done")) break;
+            if (typeChoice.equals("5")) break;
+
+            if (typeChoice.equals("6")) { // removing a topping list loop plus prompting useer to enter a number as a script, parsing to int and exception incase they dont enter a number.
+                if (sandwich.getToppings().isEmpty()) {
+                    System.out.println("No toppings to remove.");
+                    continue;
+                }
+
+                System.out.println("Current toppings:");
+                for (int i = 0; i < sandwich.getToppings().size(); i++) {
+                    System.out.println((i + 1) + ") " + sandwich.getToppings().get(i));
+                }
+
+                System.out.print("Enter number to remove: ");
+                String removeInput = scanner.nextLine().trim();
+
+                try {
+                    int removeIndex = Integer.parseInt(removeInput) - 1;
+                    if (removeIndex < 0 || removeIndex >= sandwich.getToppings().size()) {
+                        System.out.println("Invalid selection.");
+                    } else {
+                        Topping removed = sandwich.getToppings().remove(removeIndex);
+                        System.out.println("Removed: " + removed);
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Please enter a valid number.");
+                }
+
+                continue;
+            }
 
             if (!typeChoice.matches("[1-4]")) {
                 System.out.println("Invalid choice. Please select 1–4 or type 'done'.");
@@ -129,13 +160,13 @@ public class MenuScreen {
                 case "2" -> "cheese";
                 case "3" -> "regular";
                 case "4" -> "sauce";
-                default -> ""; // This will never happen due to prior validation
+                default -> ""; // This will never happen due to prior validation above with the break and matching types
             };
 
             String[] options = switch (toppingType) {
                 case "meat" -> new String[]{"Turkey", "Ham", "Roast Beef", "Salami"};
                 case "cheese" -> new String[]{"Cheddar", "Swiss", "Provolone", "American"};
-                case "regular" -> new String[]{"Lettuce", "Tomato", "Onion", "Pickles"};
+                case "regular" -> new String[]{"Lettuce", "Tomato", "Onion", "Pickles",    };
                 case "sauce" -> new String[]{"Mayo", "Mustard", "Chipotle", "Ranch"};
                 default -> new String[0];
             };
@@ -245,5 +276,7 @@ public class MenuScreen {
                 --- Final Order ---
                 """);
         ReceiptGenerator.printReceipt(order);
+        System.out.println("Thank you for your order!");
+        System.exit(0);
     }
 }
