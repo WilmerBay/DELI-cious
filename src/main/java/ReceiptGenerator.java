@@ -8,24 +8,20 @@ public class ReceiptGenerator {
     private static final double TAX_RATE = 0.095;
 
     public static void printReceipt(Order order) {
+
         Sandwich sandwich = order.getSandwich();
         Chip chip = order.getChip();
         Drink drink = order.getDrink();
 
-        System.out.println("======= DELI-cious Receipt =======\n");
-        double basePrice = switch (sandwich.getSize()) {
-            case "4" -> 5.50;
-            case "8" -> 7.00;
-            case "12" -> 8.50;
-            default -> 0.00;
-        };
-        System.out.printf("%s\" %s sandwich: $%.2f%n", sandwich.getSize(), sandwich.getBread(), basePrice);
+        System.out.println("======= DELI-cious Receipt =======");
+        System.out.println(sandwich.getSize() + "\" " + sandwich.getBread() + " sandwich");
 
         if (sandwich.isToasted()) {
             System.out.println("Toasted");
         }
 
         System.out.println("Toppings:");
+
         if (sandwich.getToppings().isEmpty()) {
             System.out.println(" - None");
         } else {
@@ -36,14 +32,16 @@ public class ReceiptGenerator {
         }
 
         double chipPrice = 0.0;
+
         if (chip != null && !chip.getName().equalsIgnoreCase("None")) {
             chipPrice = 1.50;
             System.out.printf("Chips: %-17s $%.2f%n", chip, chipPrice);
         }
 
         double drinkPrice = 0.0;
+
         if (drink != null && !drink.getName().equalsIgnoreCase("None")) {
-            drinkPrice = 1.50;
+            drinkPrice = drink.getPrice();
             System.out.printf("Drink: %-17s $%.2f%n", drink, drinkPrice);
         }
 
@@ -61,20 +59,12 @@ public class ReceiptGenerator {
         String filename = generateFilename();
 
         try (FileWriter writer = new FileWriter(filename)) {
-
             Sandwich sandwich = order.getSandwich();
             Chip chip = order.getChip();
             Drink drink = order.getDrink();
 
             writer.write("======= DELI-cious Receipt =======\n");
-            double basePrice = switch (sandwich.getSize()) {
-                case "4" -> 5.50;
-                case "8" -> 7.00;
-                case "12" -> 8.50;
-                default -> 0.00;
-            };
-            writer.write(String.format("%s\" %s sandwich: $%.2f%n", sandwich.getSize(), sandwich.getBread(), basePrice));
-
+            writer.write(sandwich.getSize() + "\" " + sandwich.getBread() + " sandwich\n");
             if (sandwich.isToasted()) {
                 writer.write("Toasted\n");
             }
@@ -97,7 +87,7 @@ public class ReceiptGenerator {
 
             double drinkPrice = 0.0;
             if (drink != null && !drink.getName().equalsIgnoreCase("None")) {
-                drinkPrice = 1.50;
+                drinkPrice = drink.getPrice();
                 writer.write(String.format("Drink: %-17s $%.2f%n", drink, drinkPrice));
             }
 
@@ -111,13 +101,13 @@ public class ReceiptGenerator {
             writer.write("==================================\n");
 
             System.out.println("Receipt saved to file: " + filename);
-
         } catch (IOException e) {
             System.out.println("Error writing receipt to file: " + e.getMessage());
         }
     }
 
     private static String generateFilename() {
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
         return "receipt_" + LocalDateTime.now().format(formatter) + ".txt";
     }
