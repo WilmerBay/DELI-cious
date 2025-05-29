@@ -1,3 +1,5 @@
+package models;
+
 public class SignatureSandwich extends Sandwich {
     private final String name;
     private final String description;

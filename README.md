@@ -1,4 +1,4 @@
-# Java Deli-cious Sandwich Builder App
+# Java Deli-cious models.Sandwich Builder App
 
 This is a fully interactive, menu-driven Java application that lets users build their own custom sandwich or choose from a list of signature subs. It was built as part of a capstone project to demonstrate object-oriented design, inheritance, and clean user input handling via the console.
 
@@ -86,15 +86,15 @@ Total: $4.93
 
 ## 📂 File Structure
 
-- `Main.java` – Launches the application
-- `MenuScreen.java` – Handles the home and builder menu logic
+- `app.Main.java` – Launches the application
+- `ui.MenuScreen.java` – Handles the home and builder menu logic
 - `Sandwich.java` – The main sandwich object with toppings and price logic
 - `SignatureSandwich.java` – Extends `Sandwich` for pre-built sub options
-- `SignatureMenu.java` – Holds and returns a list of signature sandwiches
+- `data.SignatureMenu.java` – Holds and returns a list of signature sandwiches
 - `Order.java` – Represents a full order with sandwich, chip, drink
 - `Topping.java` – Tracks topping type, name, and price logic
 - `Chip.java` and `Drink.java` – Simple add-ons with fixed prices
-- `ReceiptGenerator.java` – Prints and writes receipts with totals
+- `persistence.ReceiptGenerator.java` – Prints and writes receipts with totals
 
 ---
 
@@ -110,21 +110,21 @@ Total: $4.93
 
 ## 🧠 Core Java Concepts Used
 
-| Concept              | Example from Code                     |
-|----------------------|----------------------------------------|
-| Inheritance          | `SignatureSandwich extends Sandwich`  |
+| Concept              | Example from Code                    |
+|----------------------|--------------------------------------|
+| Inheritance          | `SignatureSandwich extends Sandwich` |
 | Composition          | `Order` contains `Sandwich`, `Chip`, `Drink` |
 | File I/O             | `FileWriter`, saved receipt generation |
 | Polymorphism         | Signature sandwiches treated as base `Sandwich` |
-| Switch Expressions   | Simplified control flow in menus       |
-| Input Validation     | Topping selection, number parsing      |
+| Switch Expressions   | Simplified control flow in menus     |
+| Input Validation     | Topping selection, number parsing |
 | Custom Price Logic   | Prices vary by topping type & sandwich size and extras |
 
 ---
 
 ## 📌 Highlights
 
-- Signature subs are **preloaded via inheritance** and housed in `SignatureMenu`
+- Signature subs are **preloaded via inheritance** and housed in `data.SignatureMenu`
 - Toppings feature **dynamic pricing** based on sandwich size and type
 - The user is never “lost” — each flow loops or clearly exits
 - Receipts show all item details for easy post-order confirmation
@@ -134,7 +134,7 @@ Total: $4.93
 ## 🖥️ How to Run
 
 1. Open in IntelliJ or any Java IDE.
-2. Run `Main.java`.
+2. Run `app.Main.java`.
 3. Choose an option and follow the prompts to build your sandwich or order a signature one.
 4. Your receipt will print to the terminal and save to a `.txt` file automatically.
 

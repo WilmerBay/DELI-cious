@@ -1,3 +1,5 @@
+package models;
+
 public class Drink {
     private String name;
     private String size;
@@ -17,9 +19,9 @@ public class Drink {
 
     public double getPrice() {
         return switch (size.toLowerCase()) {
-            case "small" -> 1.50;
-            case "medium" -> 2.00;
-            case "large" -> 2.50;
+            case "small" -> 2.00;
+            case "medium" -> 2.50;
+            case "large" -> 3.50;
             default -> 0.0;
         };
     }

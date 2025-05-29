@@ -1,3 +1,9 @@
+package ui;
+
+import data.SignatureMenu;
+import models.*;
+import persistence.ReceiptGenerator;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -44,7 +50,7 @@ public class MenuScreen {
         for (int i = 0; i < list.size(); i++) {
             System.out.printf("%d) %s - %s%n", i + 1, list.get(i).getName(), list.get(i).getDescription());
         }
-        System.out.println("0) Back to Main Menu");
+        System.out.println("0) Back to app.Main Menu");
 
         System.out.print("> ");
         String input = scanner.nextLine().trim();

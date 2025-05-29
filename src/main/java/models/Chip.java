@@ -1,3 +1,5 @@
+package models;
+
 public class Chip {
     private String name;
     private double price;

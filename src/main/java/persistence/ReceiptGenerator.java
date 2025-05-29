@@ -1,9 +1,17 @@
+package persistence;
+
+import models.*;
+
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+
 public class ReceiptGenerator {
+
+    private static final String PATH  = "src/main/resources/receipt/";
 
     private static final double TAX_RATE = 0.095;
 
@@ -56,9 +64,10 @@ public class ReceiptGenerator {
     }
 
     public static void writeReceiptToFile(Order order) {
+
         String filename = generateFilename();
 
-        try (FileWriter writer = new FileWriter(filename)) {
+        try (FileWriter writer = new FileWriter(PATH + filename)) {
             Sandwich sandwich = order.getSandwich();
             Chip chip = order.getChip();
             Drink drink = order.getDrink();
@@ -108,7 +117,7 @@ public class ReceiptGenerator {
 
     private static String generateFilename() {
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
-        return "receipt_" + LocalDateTime.now().format(formatter) + ".txt";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
+        return LocalDateTime.now().format(formatter) + ".txt";
     }
 }
