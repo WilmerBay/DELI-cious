@@ -1,0 +1,12 @@
+======= DELI-cious Receipt =======
+1) 8" rye sandwich (Toasted)    $7.00
+Toppings:
+ - Tomato (extra)       $0.00
+ - Mayo (extra)         $0.00
+
+Chips: Sour Cream & Onion $1.50
+
+Subtotal:                     $8.50
+Tax (9.5%):                   $0.81
+Total:                         $9.31
+==================================

@@ -1,49 +1,52 @@
 package models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Order {
 
-    private Sandwich sandwich;
-    private Chip chip;
-    private Drink drink;
+    private List<Sandwich> sandwiches = new ArrayList<>();
+    private List<Chip>     chips      = new ArrayList<>();
+    private List<Drink>    drinks     = new ArrayList<>();
 
-    public Order(Sandwich sandwich, Chip chip, Drink drink) {
-        this.sandwich = sandwich;
-        this.chip = chip;
-        this.drink = drink;
+    public Order() {
     }
 
-    public Sandwich getSandwich() {
-        return sandwich;
+    public void addSandwich(Sandwich sandwich) {
+        sandwiches.add(sandwich);
     }
 
-    public Chip getChip() {
-        return chip;
+    public void addChip(Chip chip) {
+        chips.add(chip);
     }
 
-    public Drink getDrink() {
-        return drink;
+    public void addDrink(Drink drink) {
+        drinks.add(drink);
     }
 
-    // Setters
-    public void setSandwich(Sandwich sandwich) {
-        this.sandwich = sandwich;
+    public List<Sandwich> getSandwiches() {
+        return sandwiches;
     }
 
-    public void setChip(Chip chip) {
-        this.chip = chip;
+    public List<Chip> getChips() {
+        return chips;
     }
 
-    public void setDrink(Drink drink) {
-        this.drink = drink;
+    public List<Drink> getDrinks() {
+        return drinks;
     }
 
-    @Override
-    public String toString() {
-        return """
-                --- Final Order ---
-                """ +
-                sandwich.toString() + "\n" +
-                (chip != null ? "Chips: " + chip + "\n" : "") +
-                (drink != null ? "Drink: " + drink + "\n" : "");
+    public double calculateSubtotal() {
+        double total = 0.0;
+        for (Sandwich s : sandwiches) {
+            total += s.calculatePrice();
+        }
+        for (Chip c : chips) {
+            total += c.getPrice();
+        }
+        for (Drink d : drinks) {
+            total += d.getPrice();
+        }
+        return total;
     }
 }

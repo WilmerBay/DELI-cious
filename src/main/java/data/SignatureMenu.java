@@ -1,3 +1,4 @@
+// data/SignatureMenu.java
 package data;
 
 import models.SignatureSandwich;
@@ -11,49 +12,57 @@ public class SignatureMenu {
     static {
         SignatureSandwich s1 = new SignatureSandwich(
                 "The Classic Turkey Delight",
-                "Turkey, Cheddar, Lettuce, Mayo (Toasted White, 8\")",
-                "8", "white", true);
+                "Turkey, Swiss, Tomato, Honey Mustard (Toasted Wheat, 8\")",
+                "8", "wheat", true);
+
         s1.addTopping(new Topping("Turkey", "meat", false));
-        s1.addTopping(new Topping("Cheddar", "cheese", false));
-        s1.addTopping(new Topping("Lettuce", "regular", false));
-        s1.addTopping(new Topping("Mayo", "sauce", false));
+        s1.addTopping(new Topping("Swiss", "cheese", false));
+        s1.addTopping(new Topping("Tomato", "regular", false));
+        s1.addTopping(new Topping("Honey Mustard", "sauce", false));
 
         SignatureSandwich s2 = new SignatureSandwich(
                 "The Spicy Roast Beast",
-                "Roast Beef, Swiss, Onion, Chipotle (Wheat, 12\")",
-                "12", "wheat", false);
-        s2.addTopping(new Topping("Roast Beef", "meat", true));
-        s2.addTopping(new Topping("Swiss", "cheese", false));
-        s2.addTopping(new Topping("Onion", "regular", false));
-        s2.addTopping(new Topping("Chipotle", "sauce", true));
+                "Roast Beef, Pepper Jack (extra), Jalapeños, Chipotle (Toasted Wrap, 12\")",
+                "12", "wrap", true);
+
+        s2.addTopping(new Topping("Roast Beef", "meat", false));
+        s2.addTopping(new Topping("Pepper Jack", "cheese", true));
+        s2.addTopping(new Topping("Jalapeños", "regular", false));
+        s2.addTopping(new Topping("Chipotle", "sauce", false));
 
         SignatureSandwich s3 = new SignatureSandwich(
                 "The Salamifornian Delight",
-                "Salami, Provolone, Tomato, Ranch (Rye, 8\")",
+                "Salami, Provolone, Guacamole, Vinaigrette (Rye, 8\")",
                 "8", "rye", false);
+
         s3.addTopping(new Topping("Salami", "meat", false));
         s3.addTopping(new Topping("Provolone", "cheese", false));
-        s3.addTopping(new Topping("Tomato", "regular", false));
-        s3.addTopping(new Topping("Ranch", "sauce", false));
+        s3.addTopping(new Topping("Guacamole", "regular", false));
+        s3.addTopping(new Topping("Vinaigrette", "sauce", false));
 
         SignatureSandwich s4 = new SignatureSandwich(
                 "The Saucy Sammy",
-                "All Sauces on Wrap (4\")",
+                "All Sauces: Mayo, Mustard, Ketchup, Ranch, Thousand Islands, Vinaigrette, Au jus (Wrap, 4\")",
                 "4", "wrap", false);
+
         s4.addTopping(new Topping("Mayo", "sauce", false));
         s4.addTopping(new Topping("Mustard", "sauce", false));
-        s4.addTopping(new Topping("Chipotle", "sauce", false));
+        s4.addTopping(new Topping("Ketchup", "sauce", false));
         s4.addTopping(new Topping("Ranch", "sauce", false));
+        s4.addTopping(new Topping("Thousand Islands", "sauce", false));
+        s4.addTopping(new Topping("Vinaigrette", "sauce", false));
+        s4.addTopping(new Topping("Au jus", "sauce", false));
 
         SignatureSandwich s5 = new SignatureSandwich(
                 "The Veggie Crunch",
-                "Lettuce, Tomato, Onion, Pickles, Mayo (Toasted Wheat, 12\")",
+                "Lettuce, Tomato, Cucumbers, Mushrooms, Guacamole (Toasted Wheat, 12\")",
                 "12", "wheat", true);
+
         s5.addTopping(new Topping("Lettuce", "regular", false));
         s5.addTopping(new Topping("Tomato", "regular", false));
-        s5.addTopping(new Topping("Onion", "regular", false));
-        s5.addTopping(new Topping("Pickles", "regular", false));
-        s5.addTopping(new Topping("Mayo", "sauce", false));
+        s5.addTopping(new Topping("Cucumbers", "regular", false));
+        s5.addTopping(new Topping("Mushrooms", "regular", false));
+        s5.addTopping(new Topping("Guacamole", "regular", false));
 
         sandwiches.add(s1);
         sandwiches.add(s2);
