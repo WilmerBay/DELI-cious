@@ -15,20 +15,19 @@ public class ReceiptGenerator {
     private static final double TAX_RATE = 0.095;
 
     public static void printReceipt(Order order) {
+
         Sandwich sandwich = order.getSandwich();
         Chip chip = order.getChip();
         Drink drink = order.getDrink();
 
-        double sandwichBasePrice = sandwich.calculateBasePrice(); // FIX
-        double toppingsTotal = 0.0;
-
         System.out.println("======= DELI-cious Receipt =======");
-        System.out.println(sandwich.getSize() + "\" " + sandwich.getBread() + " sandwich");
-        if (sandwich.isToasted()) {
-            System.out.println("Toasted");
-        }
 
-        System.out.printf("%-25s $%.2f%n", "Base Sandwich:", sandwichBasePrice); // FIX
+        double sandwichBasePrice = sandwich.calculateBasePrice();
+        System.out.printf("%s\" %s sandwich", sandwich.getSize(), sandwich.getBread());
+        if (sandwich.isToasted()) {
+            System.out.print(" (Toasted)");
+        }
+        System.out.printf("    $%.2f%n", sandwichBasePrice);
 
         System.out.println("Toppings:");
         if (sandwich.getToppings().isEmpty()) {
@@ -36,31 +35,29 @@ public class ReceiptGenerator {
         } else {
             for (Topping topping : sandwich.getToppings()) {
                 double price = topping.getPrice(sandwich.getSize());
-                toppingsTotal += price;
-                System.out.printf(" - %-22s $%.2f%n", topping, price);
+                System.out.printf(" - %-20s $%.2f%n", topping, price);
             }
         }
 
         double chipPrice = 0.0;
         if (chip != null && !chip.getName().equalsIgnoreCase("None")) {
             chipPrice = 1.50;
-            System.out.printf("%-25s $%.2f%n", "Chips: " + chip, chipPrice);
+            System.out.printf("Chips: %-17s $%.2f%n", chip, chipPrice);
         }
 
         double drinkPrice = 0.0;
         if (drink != null && !drink.getName().equalsIgnoreCase("None")) {
             drinkPrice = drink.getPrice();
-            System.out.printf("%-25s $%.2f%n", "Drink: " + drink, drinkPrice);
+            System.out.printf("Drink: %-17s $%.2f%n", drink, drinkPrice);
         }
 
-        double subtotal = sandwichBasePrice + toppingsTotal + chipPrice + drinkPrice;
+        double subtotal = sandwich.calculatePrice() + chipPrice + drinkPrice;
         double tax = subtotal * TAX_RATE;
         double total = subtotal + tax;
 
-        System.out.println();
-        System.out.printf("%-25s $%.2f%n", "Subtotal:", subtotal);
-        System.out.printf("%-25s $%.2f%n", String.format("Tax (%.1f%%):", TAX_RATE * 100), tax);
-        System.out.printf("%-25s $%.2f%n", "Total:", total);
+        System.out.printf("%nSubtotal:%21s$%.2f%n", "", subtotal);
+        System.out.printf("Tax (%.1f%%):%19s$%.2f%n", TAX_RATE * 100, "", tax);
+        System.out.printf("Total:%25s$%.2f%n", "", total);
         System.out.println("==================================");
     }
 
@@ -75,12 +72,14 @@ public class ReceiptGenerator {
             Drink drink = order.getDrink();
 
             writer.write("======= DELI-cious Receipt =======\n");
-            writer.write(sandwich.getSize() + "\" " + sandwich.getBread() + " sandwich\n");
-            if (sandwich.isToasted()) {
-                writer.write("Toasted\n");
-            }
+
             double sandwichBasePrice = sandwich.calculateBasePrice();
-            writer.write(String.format("%-25s $%.2f%n", "Base Sandwich:", sandwichBasePrice));
+            writer.write(String.format("%s\" %s sandwich", sandwich.getSize(), sandwich.getBread()));
+            if (sandwich.isToasted()) {
+                writer.write(" (Toasted)");
+            }
+            writer.write(String.format("    $%.2f%n", sandwichBasePrice));
+
             writer.write("Toppings:\n");
             if (sandwich.getToppings().isEmpty()) {
                 writer.write(" - None\n");
@@ -107,9 +106,9 @@ public class ReceiptGenerator {
             double tax = subtotal * TAX_RATE;
             double total = subtotal + tax;
 
-            writer.write(String.format("%nSubtotal: $%.2f%n", subtotal));
-            writer.write(String.format("Tax (%.1f%%): $%.2f%n", TAX_RATE * 100, tax));
-            writer.write(String.format("Total: $%.2f%n", total));
+            writer.write(String.format("%nSubtotal:%21s$%.2f%n", "", subtotal));
+            writer.write(String.format("Tax (%.1f%%):%19s$%.2f%n", TAX_RATE * 100, "", tax));
+            writer.write(String.format("Total:%25s$%.2f%n", "", total));
             writer.write("==================================\n");
 
             System.out.println("Receipt saved to file: " + filename);
