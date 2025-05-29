@@ -276,6 +276,7 @@ public class MenuScreen {
                 --- Final Order ---
                 """);
         ReceiptGenerator.printReceipt(order);
+        ReceiptGenerator.writeReceiptToFile(order);
         System.out.println("Thank you for your order!");
         System.exit(0);
     }

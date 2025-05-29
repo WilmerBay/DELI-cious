@@ -4,5 +4,6 @@ public class Main {
 
         MenuScreen menu = new MenuScreen();
         menu.displayHomeScreen(); // launches the app
+
     }
 }
