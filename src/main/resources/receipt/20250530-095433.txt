@@ -1,0 +1,23 @@
+======= DELI-cious Receipt =======
+1) 12" wheat sandwich (Toasted)    $8.50
+Toppings:
+ - Chicken Breast (extra) $4.50
+ - Pepper Jack          $2.25
+ - Lettuce              $0.00
+ - Tomato               $0.00
+ - Peppers              $0.00
+ - Guacamole            $0.00
+ - Honey Mustard        $0.00
+ - Mayo                 $0.00
+
+2) 8" rye sandwich    $7.00
+Toppings:
+ - None
+
+Chips: BBQ               $1.50
+Drink: Water             $3.50
+
+Subtotal:                     $27.25
+Tax (9.5%):                   $2.59
+Total:                         $29.84
+==================================

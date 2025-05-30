@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 public class ReceiptGenerator {
 
-    private static final String PATH     = "src/main/resources/receipt/";
+    private static final String PATH = "src/main/resources/receipt/";
     private static final double TAX_RATE = 0.095;
 
     public static void printReceipt(Order order) {
@@ -17,10 +17,10 @@ public class ReceiptGenerator {
         System.out.println("======= DELI-cious Receipt =======");
 
         // Sandwiches
-        int idx = 1;
+        int i = 1;
         for (Sandwich s : order.getSandwiches()) {
             System.out.printf("%d) %s\" %s sandwich%s    $%.2f%n",
-                    idx++,
+                    i++,
                     s.getSize(), s.getBread(),
                     s.isToasted() ? " (Toasted)" : "",
                     s.calculateBasePrice()
@@ -65,10 +65,10 @@ public class ReceiptGenerator {
             writer.write("======= DELI-cious Receipt =======\n");
 
             // Sandwiches
-            int idx = 1;
+            int i = 1;
             for (Sandwich s : order.getSandwiches()) {
                 writer.write(String.format("%d) %s\" %s sandwich%s    $%.2f%n",
-                        idx++,
+                        i++,
                         s.getSize(), s.getBread(),
                         s.isToasted() ? " (Toasted)" : "",
                         s.calculateBasePrice()

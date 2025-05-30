@@ -133,9 +133,11 @@ public class MenuScreen {
     }
 
     private Sandwich buildSandwich() {
+
         System.out.println("--- Build Your Sandwich ---");
 
         String size = "";
+
         while (true) {
             System.out.println("""
                     Choose a size:
@@ -158,6 +160,7 @@ public class MenuScreen {
         }
 
         String bread = "";
+
         while (true) {
             System.out.println("""
                     Choose bread:
@@ -168,6 +171,7 @@ public class MenuScreen {
                     """);
             System.out.print("> ");
             String input = scanner.nextLine().trim();
+
             switch (input) {
                 case "1" -> bread = "white";
                 case "2" -> bread = "wheat";
@@ -182,9 +186,12 @@ public class MenuScreen {
         }
 
         boolean toasted = false;
+
         while (true) {
+
             System.out.print("Would you like it toasted? (y/n): ");
             String input = scanner.nextLine().trim().toLowerCase();
+
             if (input.equals("y")) {
                 toasted = true;
                 break;
@@ -206,17 +213,20 @@ public class MenuScreen {
                     5) Done
                     6) Remove Topping
                     """);
+
             System.out.print("> ");
             String typeChoice = scanner.nextLine().trim();
 
             if (typeChoice.equals("5")) break;
 
             if (typeChoice.equals("6")) {
+
                 if (sandwich.getToppings().isEmpty()) {
                     System.out.println("No toppings to remove.");
                     continue;
                 }
                 System.out.println("Current toppings:");
+
                 for (int i = 0; i < sandwich.getToppings().size(); i++) {
                     System.out.println((i + 1) + ") " + sandwich.getToppings().get(i));
                 }
@@ -300,13 +310,16 @@ public class MenuScreen {
                 1) Classic
                 2) BBQ
                 3) Sour Cream & Onion
-                4) None
+                4) One Chip Challenge
+                5) None
                 """);
+
         System.out.print("> ");
         return switch (scanner.nextLine().trim()) {
             case "1" -> new Chip("Classic");
             case "2" -> new Chip("BBQ");
             case "3" -> new Chip("Sour Cream & Onion");
+            case "4" -> new Chip("One Chip Challenge");
             default  -> new Chip("None");
         };
     }

@@ -1,0 +1,18 @@
+======= DELI-cious Receipt =======
+1) 4" wrap sandwich    $5.50
+Toppings:
+ - Mayo                 $0.00
+ - Mustard              $0.00
+ - Ketchup              $0.00
+ - Ranch                $0.00
+ - Thousand Islands     $0.00
+ - Vinaigrette          $0.00
+ - Au jus               $0.00
+
+Chips: Classic           $1.50
+Drink: Soda              $2.50
+
+Subtotal:                     $9.50
+Tax (9.5%):                   $0.90
+Total:                         $10.40
+==================================
