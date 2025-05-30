@@ -4,7 +4,6 @@ package ui;
 import data.SignatureMenu;
 import models.*;
 import persistence.ReceiptGenerator;
-
 import java.util.List;
 import java.util.Scanner;
 
